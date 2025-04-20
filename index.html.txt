@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website PERGUNU Situbondo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f0f8f5, #ffffff);
+      color: #333;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .logo {
+      max-width: 160px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: gold;
+      margin: 10px 0;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: green;
+      margin: 5px 0;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: #e3f2fd;
+      font-size: 18px;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px); }
+      100% { transform: translateY(110vh); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="https://drive.google.com/uc?export=view&id=1XaYh2eDaqvMBhWYFZt-kwMfBi4S9gGDJ" alt="Logo PERGUNU" />
+    <h1>Selamat Datang Di Website Resmi</h1>
+    <h2>PERGUNU SITUBONDO</h2>
+
+    <div class="footer">
+      Website ini dikembangkan oleh <strong>cendhanu@pergunusitubondo</strong>
+    </div>
+  </div>
+
+  <!-- Salju Ringan -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      let snowflake = document.createElement("div");
+      snowflake.innerHTML = "&#10052;";
+      snowflake.classList.add("snowflake");
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
+      snowflake.style.animationDuration = (Math.random() * 10 + 10) + "s";
+      document.body.appendChild(snowflake);
+    }
+  </script>
+</body>
+</html>
