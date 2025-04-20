@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PERGUNU Situbondo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #1a2f66, #102348);
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 2;
+      display: none; /* Disembunyikan agar tidak mengganggu tampilan */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Google Sites ditampilkan fullscreen -->
+<iframe src="https://sites.google.com/view/pergunusitubondo/home"></iframe>
+
+<!-- Audio otomatis diputar dan loop -->
+<audio id="bgAudio" autoplay loop>
+  <source src="https://media.vocaroo.com/mp3/1ooLLSC7CVfx" type="audio/mpeg">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<script>
+  const audio = document.getElementById("bgAudio");
+
+  // Pastikan audio tetap bermain meskipun iframe di atas
+  window.addEventListener('load', () => {
+    audio.play().catch((e) => {
+      console.warn('Audio tidak bisa autoplay karena izin browser.');
+    });
+  });
+
+  // Jika pengunjung keluar dari halaman, stop audio
+  window.addEventListener('beforeunload', () => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+</script>
+
+</body>
+</html>
