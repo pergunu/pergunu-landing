@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PERGUNU Situbondo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #1a2f66, #102348);
+      color: #000;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .frame {
+      background: rgba(255, 255, 255, 0.25);
+      border: 3px dashed #00ffd5;
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 650px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 255, 170, 0.2);
+    }
+
+    .frame h1 {
+      font-size: 2.2em;
+      margin-bottom: 0;
+      color: #ffffff;
+      text-shadow: 1px 1px 4px #00000088;
+    }
+
+    .frame h2 {
+      font-size: 3em;
+      margin: 10px 0 30px;
+      color: #ffd700;
+      font-weight: bold;
+      text-shadow: 1px 1px 6px #00000099;
+    }
+
+    .frame p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: white;
+      text-shadow: 0 0 4px #000000aa;
+    }
+
+    .frame button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 0 10px;
+      width: 140px;
+    }
+
+    .frame .masuk {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .frame .masuk:hover {
+      background-color: #218838;
+    }
+
+    .frame .keluar {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .frame .keluar:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- Frame Elegan -->
+<div class="frame" id="introBox">
+  <h1>Selamat Di Website Resmi</h1>
+  <h2>PERGUNU SITUBONDO</h2>
+  <p>Apakah Anda ingin mengunjungi halaman website PERGUNU?</p>
+  <button class="masuk" onclick="start()">Masuk</button>
+  <button class="keluar" onclick="exit()">Keluar</button>
+</div>
+
+<!-- Audio -->
+<audio id="bgAudio" autoplay loop>
+  <source src="https://media.vocaroo.com/mp3/1ooLLSC7CVfx" type="audio/mpeg">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<!-- Script -->
+<script>
+  function start() {
+    document.getElementById('introBox').innerHTML = `
+      <h2 style="color: white">Mengalihkan ke halaman utama...</h2>
+    `;
+    document.getElementById('bgAudio').play();
+    setTimeout(() => {
+      window.location.href = "https://sites.google.com/view/pergunusitubondo/home";
+    }, 1500);
+  }
+
+  function exit() {
+    document.getElementById('introBox').innerHTML = "<h2 style='color: white'>Terima kasih telah mengakses website PERGUNU.</h2>";
+  }
+
+  // Particle Background
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        d: Math.random() * 1
+      });
+    }
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.beginPath();
+    particles.forEach(p => {
+      ctx.moveTo(p.x, p.y);
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+    });
+    ctx.fill();
+    moveParticles();
+  }
+
+  function moveParticles() {
+    particles.forEach(p => {
+      p.y += p.d;
+      if (p.y > canvas.height) {
+        p.y = 0;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    createParticles();
+  });
+
+  resizeCanvas();
+  createParticles();
+  setInterval(drawParticles, 33);
+</script>
+
+</body>
+</html>
