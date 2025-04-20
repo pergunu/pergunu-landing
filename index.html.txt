@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PERGUNU Situbondo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: transparent;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #1a2f66cc, #102348ee);
+      backdrop-filter: blur(6px);
+      z-index: -1;
+    }
+
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 600px;
+      width: 90%;
+      padding: 40px;
+      border-radius: 20px;
+      border: 3px dashed #00ffd5;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+      text-align: center;
+      color: white;
+    }
+
+    .centered h1 {
+      font-size: 2.2em;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .centered h2 {
+      font-size: 3em;
+      color: #00ffd5;
+      margin-bottom: 20px;
+    }
+
+    .centered p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .centered button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .centered button:hover {
+      background-color: #218838;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="centered">
+    <h1>Selamat Datang di Website Resmi</h1>
+    <h2>PERGUNU SITUBONDO</h2>
+    <p>Silakan klik tombol di bawah untuk masuk ke halaman utama.</p>
+    <button onclick="openSite()">Masuk</button>
+  </div>
+
+  <!-- Audio otomatis dan berulang -->
+  <audio autoplay loop id="bgAudio">
+    <source src="https://media.vocaroo.com/mp3/1ooLLSC7CVfx" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
+
+  <script>
+    // Mainkan audio
+    const audio = document.getElementById("bgAudio");
+    window.addEventListener('load', () => {
+      audio.play().catch(() => {
+        console.warn("Autoplay diblokir oleh browser.");
+      });
+    });
+
+    // Buka Google Sites di tab baru
+    function openSite() {
+      const win = window.open("
