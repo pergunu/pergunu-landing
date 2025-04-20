@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PERGUNU Situbondo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #1a2f66, #102348);
+    }
+
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    .frame {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      border: 3px dashed #00ffd5;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      z-index: 2;
+    }
+
+    .frame h1 {
+      font-size: 2.2em;
+      margin: 0;
+      color: #ffffff;
+    }
+
+    .frame h2 {
+      font-size: 3em;
+      margin: 10px 0 30px;
+      color: #ffd700;
+    }
+
+    .frame p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .frame button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 0 10px;
+      width: 140px;
+      transition: 0.3s;
+    }
+
+    .frame .masuk {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .frame .masuk:hover {
+      background-color: #218838;
+    }
+
+    .frame .keluar {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .frame .keluar:hover {
+      background-color: #c82333;
+    }
+
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      border: none;
+      display: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="frame" id="introBox">
+  <h1>Selamat Di Website Resmi</h1>
+  <h2>PERGUNU SITUBONDO</h2>
+  <p>Apakah Anda ingin mengunjungi halaman website PERGUNU?</p>
+  <button class="masuk" onclick="start()">Masuk</button>
+  <button class="keluar" onclick="exit()">Keluar</button>
+</div>
+
+<iframe id="siteFrame"></iframe>
+
+<audio id="bgAudio" autoplay loop>
+  <source src="https://media.vocaroo.com/mp3/1ooLLSC7CVfx" type="audio/mpeg">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<script>
+  function start() {
+    document.getElementById('introBox').style.display = 'none';
+    const iframe = document.getElementById('siteFrame');
+    iframe.src = "https://sites.google.com/view/pergunusitubondo/home";
+    iframe.style.display = 'block';
+    document.getElementById('bgAudio').play();
+  }
+
+  function exit() {
+    document.getElementById('introBox').innerHTML = `
+      <h2 style="color:white;">Terima kasih telah mengakses website PERGUNU.</h2>
+    `;
+  }
+
+  // Particle effect
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        d: Math.random() * 1
+      });
+    }
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.beginPath();
+    particles.forEach(p => {
+      ctx.moveTo(p.x, p.y);
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+    });
+    ctx.fill();
+    moveParticles();
+  }
+
+  function moveParticles() {
+    particles.forEach(p => {
+      p.y += p.d;
+      if (p.y > canvas.height) {
+        p.y = 0;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    createParticles();
+  });
+
+  resizeCanvas();
+  createParticles();
+  setInterval(drawParticles, 33);
+</script>
+
+</body>
+</html>
