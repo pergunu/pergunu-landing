@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PERGUNU Situbondo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f9fbe7, #e8f5e9);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .container {
+      padding: 40px 20px 20px;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .welcome {
+      font-size: 20px;
+      color: #fbc02d; /* kuning emas */
+      margin-bottom: 10px;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .title {
+      font-size: 32px;
+      color: #388e3c; /* hijau */
+      font-weight: bold;
+      animation: fadeInUp 2.5s ease-in-out;
+    }
+
+    .credit {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Efek animasi daun berguguran */
+    .leaf {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-image: url('https://i.ibb.co/mBzzyXH/leaf.png');
+      background-size: cover;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        left: calc(100% * var(--x));
+        transform: rotate(0deg);
+      }
+      100% {
+        top: 110%;
+        left: calc(100% * var(--x-end));
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="https://drive.google.com/uc?export=view
