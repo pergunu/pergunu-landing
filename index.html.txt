@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PERGUNU SITUBONDO</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1f4037, #99f2c8);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .logo {
+      max-width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .text-box {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .main-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #fff;
+      margin: 0;
+    }
+
+    .sub-title {
+      font-size: 20px;
+      color: gold;
+      margin: 10px 0;
+    }
+
+    .action-buttons {
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-enter {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-exit {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 14px;
+      color: #f5f5f5;
+    }
+
+    /* Taburan bintang animasi */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://raw.githubusercontent.com/JulianLaval/canvas-particle-network/master/demo/stars.png') repeat;
+      animation: animateStars 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes animateStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 5000px; }
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+
+    .content {
+      z-index: 2;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="overlay"></div>
+
+  <div class="container content">
+    <img src="https://raw.githubusercontent.com/pergunu/pergunu-landing/refs/heads/main/logo-pergunu.png" alt="Logo PERGUNU" class="logo" />
+
+    <div class="text-box">
+      <h2 class="sub-title">Selamat Datang Di Website Resmi</h2>
+      <h1 class="main-title">PERGUNU SITUBONDO</h1>
+
+      <p style="margin-top: 20px; color: #fff; font-size: 15px;">
+        Klik "Masuk" untuk mengunjungi halaman utama. Disarankan klik tombol <b>"Jelajah Website Tanpa Iklan"</b> setelah masuk agar pengalaman lebih ringan dan bebas gangguan.
+      </p>
+
+      <div class="action-buttons">
+        <button class="btn btn-exit" onclick="keluar()">Batal & Keluar</button>
+        <button class="btn btn-enter" onclick="masuk()">Iya, Masuk</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      Website ini dikembangkan oleh Cendhanu Tim Kreatif PERGUNU sejak 2025 sebagai wujud dedikasi untuk memajukan pendidikan dan profesionalisme guru di Indonesia.
+    </div>
+  </div>
+
+  <script>
+    function masuk() {
+      window.location.href = "https://sites.google.com/view/pergunusitubondo/menu";
+    }
+
+    function keluar() {
+      alert("Terimakasih Atas Kunjungan Anda Di Website Kami");
+    }
+  </script>
+</body>
+</html>
