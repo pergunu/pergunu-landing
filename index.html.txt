@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PERGUNU Situbondo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #e8f0f7, #dff5eb);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: goldenrod;
+      margin: 10px 0;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: green;
+      margin: 0;
+    }
+
+    .button-container {
+      margin-top: 40px;
+    }
+
+    .button {
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .masuk {
+      background-color: green;
+      color: white;
+    }
+
+    .keluar {
+      background-color: crimson;
+      color: white;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+    }
+
+    .audio-container {
+      display: none;
+    }
+
+    .notif {
+      font-size: 18px;
+      color: #333;
+      margin-top: 30px;
+    }
+
+    .kupu {
+      position: absolute;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    .kupu1 {
+      top: 60px;
+      left: 10px;
+      width: 90px;
+    }
+
+    .kupu2 {
+      top: 120px;
+      right: 20px;
+      width: 60px;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 15px;
+      background-color: #003300;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://raw.githubusercontent.com/pergunu/pergunu-landing/refs/heads/main/animasi-bergerak-kupu-kupu-1.gif" class="kupu kupu1" />
+  <img src="https://raw.githubusercontent.com/pergunu/pergunu-landing/refs/heads/main/animasi-bergerak-kupu-kupu-2.gif" class="kupu kupu2" />
+
+  <div class="container">
+    <img src="https://raw.githubusercontent.com/pergunu/pergunu-landing/refs/heads/main/logo-pergunu.png" class="logo" alt="Logo PERGUNU" />
+    <h1>Selamat Datang Di Website Resmi</h1>
+    <h2>PERGUNU SITUBONDO</h2>
+
+    <div class="button-container">
+      <button class="button keluar" onclick="keluar()">Batal & Keluar</button>
+      <button class="button masuk" onclick="masuk()">Iya, Masuk</button>
+    </div>
+
+    <p class="notif" id="notif"></p>
+    <div class="audio-container" id="audioDiv">
+      <iframe width="300" height="60" src="https://vocaroo.com/embed/1ooLLSC7CVfx?autoplay=1" frameborder="0" allow="autoplay"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    Website ini dikembangkan oleh Tim Digital Cendhanu | PERGUNU Situbondo &copy; 2025
+  </footer>
+
+  <script>
+    function masuk() {
+      document.getElementById('audioDiv').style.display = 'block';
+      document.getElementById('notif').innerText = '';
+    }
+
+    function keluar() {
+      document.getElementById('notif').innerText = 'Terimakasih Atas Kunjungan Anda Di Website Kami';
+      document.querySelector('.button-container').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
