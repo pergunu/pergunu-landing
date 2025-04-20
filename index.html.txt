@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PERGUNU Situbondo</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    #content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    h1 {
+      color: #00ffd5;
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1em;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<div id="content">
+  <h1>Audio sedang diputar di latar belakang...</h1>
+  <p>Silakan nikmati halaman PERGUNU di tab yang baru terbuka.</p>
+</div>
+
+<audio id="bgAudio" autoplay loop>
+  <source src="https://media.vocaroo.com/mp3/1ooLLSC7CVfx" type="audio/mpeg">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<script>
+  // Mainkan audio
+  const audio = document.getElementById("bgAudio");
+  audio.play().catch(err => {
+    console.log("Autoplay gagal: ", err);
+  });
+
+  // Buka Google Sites di tab baru
+  window.onload = () => {
+    const newTab = window.open("https://sites.google.com/view/pergunusitubondo/home", "_blank");
+
+    if (!newTab) {
+      alert("Silakan izinkan pop-up untuk membuka halaman utama.");
+    }
+  };
+</script>
+
+</body>
+</html>
