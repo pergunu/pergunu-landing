@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PERGUNU Situbondo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      border: 2px solid #4CAF50;
+      border-radius: 12px;
+      background-color: white;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      max-width: 120px;
+      margin: 0 auto 15px;
+    }
+
+    .intro-text {
+      font-size: 18px;
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+
+    .btn-group button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      background-color: #4CAF50;
+      transition: background 0.3s ease;
+    }
+
+    .btn-group button:hover {
+      background-color: #388e3c;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="welcome-screen">
+  <img src="https://drive.google.com/uc?export=view&id=1XaYh2eDaqvMBhWYFZt-kwMfBi4S9gGDJ" alt="Logo PERGUNU" class="logo">
+  <div class="intro-text">
+    Assalamu'alaikum Warahmatullah Wabarakatuh<br>
+    Selamat Datang di Website PERGUNU Situbondo<br><br>
+    Apakah Anda ingin masuk ke halaman utama?
+  </div>
+  <div class="btn-group">
+    <button onclick="masuk()">Masuk</button>
+    <button onclick="keluar()">Keluar</button>
+  </div>
+</div>
+
+<div class="container" id="main-page" style="display:none;">
+  <div id="calendar-time" style="font-size: 16px; margin-bottom: 10px;"></div>
+  <div style="font-weight: bold; color: #388e3c;">
+    Jangan Lupa Melaksanakan Sholat & Membaca Al-Qur'an
+  </div>
+</div>
+
+<audio id="audio" loop>
+  <source src="https://drive.google.com/uc?export=download&id=1Vl7s18sZpFN9KcY7lZNWGZORt4ADP1Co" type="audio/mp3">
+</audio>
+
+<footer>
+  Website ini dikembangkan oleh cendhanu@pergunusitubondo
+</footer>
+
+<script>
+  function masuk() {
+    document.getElementById("welcome-screen").style.display = "none";
+    document.getElementById("main-page").style.display = "block";
+    document.getElementById("audio").play();
+    updateTime();
+    setInterval(updateTime, 1000);
+  }
+
+  function keluar() {
+    alert("Terima kasih telah mengakses Website PERGUNU Situbondo");
+  }
+
+  function updateTime() {
+    const now = new Date();
+    const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const bulan = [
+      "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+      "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    ];
+    const namaHari = hari[now.getDay()];
+    const tanggal = now.getDate();
+    const namaBulan = bulan[now.getMonth()];
+    const tahun = now.getFullYear();
+    const jam = now.getHours().toString().padStart(2, '0');
+    const menit = now.getMinutes().toString().padStart(2, '0');
+    const detik = now.getSeconds().toString().padStart(2, '0');
+
+    const waktu = `${jam}:${menit}:${detik}`;
+    document.getElementById("calendar-time").innerText =
+      `${namaHari}, ${tanggal} ${namaBulan} ${tahun} - ${waktu}`;
+
+    // Alarm Sholat
+    const jadwal = {
+      subuh: "04:30",
+      dzuhur: "12:00",
+      ashar: "15:30",
+      maghrib: "18:00",
+      isya: "19:15"
+    };
+    const waktuSekarang = `${jam}:${menit}`;
+    for (const [sholat, waktu] of Object.entries(jadwal)) {
+      if (waktuSekarang === waktu) {
+        alert(`Waktunya sholat ${sholat.toUpperCase()}. Jangan lupa ibadah!`);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
