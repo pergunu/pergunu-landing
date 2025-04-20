@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PERGUNU Situbondo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e8f5e9, #ffffff);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #landing {
+      padding: 50px 20px;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .welcome-text {
+      font-size: 20px;
+      color: goldenrod;
+      margin-bottom: 10px;
+    }
+
+    .situbondo-text {
+      font-size: 28px;
+      font-weight: bold;
+      color: green;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #388E3C;
+    }
+
+    #main-content {
+      display: none;
+      padding: 40px 20px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      font-size: 14px;
+      color: #888;
+    }
+
+    /* Bintang animasi */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background: url('https://i.ibb.co/6bgHqvK/star1.png') repeat;
+      animation: moveStars 60s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <div id="landing">
+    <img src="https://drive.google.com/uc?export=view&id=1XaYh2eDaqvMBhWYFZt-kwMfBi4S9gGDJ" alt="Logo PERGUNU" class="logo">
+    <div class="welcome-text">Selamat Datang di Website Resmi</div>
+    <div class="situbondo-text">PERGUNU SITUBONDO</div>
+    <button class="btn" onclick="masuk()">Masuk</button>
+    <button class="btn" onclick="keluar()">Keluar</button>
+  </div>
+
+  <div id="main-content">
+    <h2>Terima kasih telah mengakses Website PERGUNU Situbondo</h2>
+    <audio id="bg-audio" autoplay loop>
+      <source src="https://drive.google.com/uc?export=download&id=1Vl7s18sZpFN9KcY7lZNWGZORt4ADP1Co" type="audio/mp3">
+      Browser anda tidak mendukung audio.
+    </audio>
+  </div>
+
+  <div class="footer">Website ini dikembangkan oleh cendhanu@pergunusitubondo</div>
+
+  <script>
+    function masuk() {
+      document.getElementById("landing").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+      document.getElementById("bg-audio").play();
+    }
+
+    function keluar() {
+      alert("Terima kasih telah mengakses Website PERGUNU Situbondo.");
+      window.location.href = "https://pergunu.github.io/pergunu-landing/";
+    }
+  </script>
+</body>
+</html>
